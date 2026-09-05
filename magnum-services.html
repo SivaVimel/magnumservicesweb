@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Magnum Services &amp; Business LLC — Fit-out &amp; Maintenance Contracting, Muscat</title>
+<meta name="description" content="Magnum Services &amp; Business LLC provides integrated fit-out and maintenance contracting in Muscat, Oman: tiling and stone, carpentry, partitions and ceilings, electrical, HVAC, plumbing and painting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ---------- tokens (light only) ---------- */
+:root{
+  --navy:#0B1F3A;
+  --navy-deep:#061426;
+  --gold:#C0932C;
+  --gold-lt:#E2BC63;
+  --gold-ink:#8E6C1B;
+
+  --surface:#FBFAF7;
+  --surface-2:#FFFFFF;
+  --surface-3:#F1EDE4;
+  --text:#0F2038;
+  --muted:#59667B;
+  --line:rgba(11,31,58,.15);
+  --hairline:rgba(11,31,58,.09);
+  --shadow:0 26px 60px -38px rgba(11,31,58,.45);
+
+  --wrap:1180px;
+  --gut:clamp(20px,5vw,64px);
+}
+
+/* ---------- base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--surface)}
+body{
+  margin:0;
+  background:var(--surface);
+  color:var(--text);
+  font-family:"Barlow",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%}
+h1,h2,h3,h4{
+  font-family:"Barlow Condensed","Barlow Semi Condensed",system-ui,sans-serif;
+  font-weight:700;line-height:.98;letter-spacing:.005em;margin:0;text-transform:uppercase;
+}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
+.rule{width:64px;height:3px;background:var(--gold);margin-bottom:22px}
+:focus-visible{outline:3px solid var(--gold-ink);outline-offset:3px}
+::selection{background:var(--gold);color:#fff}
+
+/* ---------- reveal system ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,.7,.25,1),transform .8s cubic-bezier(.22,.7,.25,1);transition-delay:var(--d,0ms)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- header ---------- */
+.hdr{
+  position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;height:84px;
+  background:rgba(251,250,247,0);border-bottom:1px solid rgba(11,31,58,0);
+  transition:background .45s ease,height .45s ease,border-color .45s ease,box-shadow .45s;
+}
+.hdr.stuck{background:rgba(255,255,255,.93);backdrop-filter:blur(10px);height:70px;border-bottom-color:var(--hairline);box-shadow:0 10px 30px -26px rgba(11,31,58,.6)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--navy)}
+.brand svg{width:38px;height:38px;flex:none}
+.brand b{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:23px;letter-spacing:.34em;text-transform:uppercase;line-height:1}
+.brand small{display:block;font-family:"Barlow",sans-serif;font-size:9.5px;font-weight:500;letter-spacing:.3em;color:var(--gold-ink);text-transform:uppercase;margin-top:4px}
+.nav{display:flex;align-items:center;gap:30px}
+.nav a{color:var(--text);text-decoration:none;font-size:14px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;position:relative;padding:6px 0}
+.nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:width .35s ease}
+.nav a:hover{color:var(--gold-ink)}
+.nav a:hover::after{width:100%}
+.callbtn{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  background:var(--navy);color:#fff;font-weight:600;font-size:15px;padding:11px 20px;
+  letter-spacing:.03em;border:1px solid var(--navy);transition:background .3s,color .3s,transform .3s;
+}
+.callbtn:hover{background:transparent;color:var(--navy);transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;padding:10px;cursor:pointer}
+.burger span{display:block;width:24px;height:2px;background:var(--navy);margin:5px 0;transition:transform .3s,opacity .3s}
+.hdr.open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hdr.open .burger span:nth-child(2){opacity:0}
+.hdr.open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.bar{position:fixed;top:0;left:0;height:2px;background:var(--gold);width:0;z-index:70;transition:width .1s linear}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  background:
+    radial-gradient(105% 80% at 82% 4%,rgba(192,147,44,.20),transparent 60%),
+    linear-gradient(168deg,#FFFFFF 0%,#FBF9F4 52%,#F1EDE3 100%);
+  padding:124px 0 0;overflow:hidden;
+}
+.grid-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(11,31,58,.055) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(11,31,58,.055) 1px,transparent 1px);
+  background-size:74px 74px;
+  mask-image:radial-gradient(80% 68% at 62% 30%,#000,transparent 76%);
+  -webkit-mask-image:radial-gradient(80% 68% at 62% 30%,#000,transparent 76%);
+}
+.hero::after{
+  content:"";position:absolute;right:-14%;top:0;bottom:0;width:46%;
+  background:linear-gradient(180deg,rgba(11,31,58,.04),rgba(192,147,44,.08));
+  transform:skewX(-9deg);pointer-events:none;
+}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center;padding-bottom:60px}
+.hero h1{font-size:clamp(46px,7.4vw,104px);line-height:.9;letter-spacing:-.005em;color:var(--navy)}
+.hero h1 .g{display:block;color:var(--gold-ink)}
+.hero .sub{margin:26px 0 34px;font-size:clamp(17px,1.35vw,19.5px);color:var(--muted);max-width:52ch}
+.hero .sub strong{color:var(--text);font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn-solid,.btn-ghost{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:16px;
+  letter-spacing:.04em;padding:15px 26px;border:1px solid;transition:background .3s,color .3s,transform .3s,box-shadow .3s;
+}
+.btn-solid{background:var(--gold);border-color:var(--gold);color:#12243D;box-shadow:0 16px 34px -20px rgba(192,147,44,.95)}
+.btn-solid:hover{background:var(--gold-lt);border-color:var(--gold-lt);transform:translateY(-3px)}
+.btn-ghost{color:var(--navy);border-color:var(--line);background:rgba(255,255,255,.6)}
+.btn-ghost:hover{border-color:var(--navy);transform:translateY(-3px)}
+
+.spec{background:var(--surface-2);border:1px solid var(--line);padding:30px 30px 8px;position:relative;box-shadow:var(--shadow)}
+.spec::before{content:"";position:absolute;top:-1px;left:-1px;width:52px;height:52px;border-top:3px solid var(--gold);border-left:3px solid var(--gold)}
+.spec h4{font-size:22px;color:var(--navy);letter-spacing:.06em;margin-bottom:18px}
+.spec ul{list-style:none;margin:0;padding:0}
+.spec li{display:flex;gap:13px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--hairline);font-size:15.5px;color:var(--muted);line-height:1.45}
+.spec li svg{width:17px;height:17px;flex:none;margin-top:3px;stroke:var(--gold-ink)}
+.scrollhint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3}
+.scrollhint i{display:block;width:1px;height:46px;background:linear-gradient(rgba(11,31,58,0),var(--gold-ink));animation:drop 2.4s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(.2);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(.05);transform-origin:bottom}}
+
+/* ---------- assurance band ---------- */
+.band{background:var(--navy);color:#fff;position:relative;z-index:3}
+.band .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.band .cell{display:flex;align-items:center;gap:14px;padding:26px 26px 26px 0;border-right:1px solid rgba(255,255,255,.14)}
+.band .cell:not(:first-child){padding-left:26px}
+.band .cell:last-child{border-right:0;padding-right:0}
+.band svg{width:26px;height:26px;flex:none;stroke:var(--gold-lt);fill:none;stroke-width:1.5}
+.band span{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:18px;letter-spacing:.06em;text-transform:uppercase;line-height:1.1}
+
+/* ---------- section shell ---------- */
+section{position:relative}
+.pad{padding:clamp(76px,10vw,132px) 0}
+.head{max-width:760px;margin-bottom:clamp(40px,5vw,64px)}
+.head h2{font-size:clamp(34px,5vw,60px);color:var(--navy)}
+.head p{margin-top:18px;color:var(--muted);font-size:18px}
+
+/* ---------- trades panels ---------- */
+.trades{background:var(--surface-3);padding:0}
+.panels{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.panel{
+  position:relative;height:clamp(230px,26vw,320px);overflow:hidden;transform:skewX(-8deg);
+  background:linear-gradient(158deg,#FFFFFF,#EFEAE0);border-bottom:4px solid var(--gold);
+  transition:background .5s ease;
+}
+.panel:first-child{margin-left:-40px}
+.panel:last-child{margin-right:-40px}
+.panel:hover{background:linear-gradient(158deg,#FFFFFF,#F7F2E6)}
+.panel .in{transform:skewX(8deg);height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:26px clamp(18px,2.4vw,34px)}
+.panel .art{position:absolute;inset:0;display:grid;place-items:center;transform:skewX(8deg);opacity:.5;transition:opacity .5s ease,transform .6s ease}
+.panel:hover .art{opacity:.85;transform:skewX(8deg) scale(1.05)}
+.panel .art svg{width:62%;max-width:210px;height:auto;stroke:var(--navy);fill:none;stroke-width:1.1;opacity:.55}
+.panel h3{position:relative;font-size:clamp(19px,1.6vw,23px);letter-spacing:.05em;color:var(--navy);line-height:1.05}
+.panel .bar-g{position:relative;width:38px;height:3px;background:var(--gold);margin-bottom:14px}
+
+/* ---------- services ---------- */
+.svc{display:grid;gap:14px}
+.item{
+  display:grid;grid-template-columns:96px 1fr;align-items:stretch;
+  background:var(--surface-2);border:1px solid var(--line);
+  transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s,border-color .4s;
+}
+.item:hover{transform:translateX(8px);box-shadow:var(--shadow);border-color:rgba(192,147,44,.65)}
+.plate{background:var(--navy);display:grid;place-items:center;position:relative}
+.plate::after{content:"";position:absolute;right:-9px;top:50%;transform:translateY(-50%) rotate(45deg);width:18px;height:18px;background:var(--navy)}
+.plate svg{width:38px;height:38px;stroke:var(--gold-lt);fill:none;stroke-width:1.4;position:relative;z-index:2}
+.item .body{padding:26px 30px 26px 34px}
+.item h3{font-size:clamp(21px,2vw,27px);color:var(--navy);letter-spacing:.03em}
+.item h3 em{font-style:normal;color:var(--gold-ink);display:block}
+.item p{margin:9px 0 0;color:var(--muted);font-size:16.5px;max-width:62ch}
+
+/* ---------- process ---------- */
+.process{background:var(--surface-3)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--line)}
+.step{padding:30px 28px 6px 0;border-right:1px solid var(--line);position:relative}
+.step:last-child{border-right:0}
+.step:not(:first-child){padding-left:28px}
+.step::before{content:"";position:absolute;top:-2px;left:0;width:0;height:2px;background:var(--gold);transition:width 1s cubic-bezier(.6,0,.2,1);transition-delay:var(--d,0ms)}
+.step.in::before{width:100%}
+.step b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:14px;letter-spacing:.24em;color:var(--gold-ink);margin-bottom:10px}
+.step h3{font-size:24px;color:var(--navy);margin-bottom:8px}
+.step p{color:var(--muted);font-size:16px}
+
+/* ---------- contact ---------- */
+.contact{background:var(--surface);overflow:hidden}
+.contact::before{
+  content:"";position:absolute;left:-16%;top:0;bottom:0;width:42%;
+  background:linear-gradient(180deg,rgba(192,147,44,.09),rgba(11,31,58,.035));
+  transform:skewX(-9deg);pointer-events:none;
+}
+.cgrid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(40px,6vw,80px);align-items:start}
+.dl{list-style:none;margin:0;padding:0}
+.dl li{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
+.dl li:first-child{border-top:1px solid var(--line)}
+.dl svg{width:22px;height:22px;flex:none;margin-top:5px;stroke:var(--gold-ink);fill:none;stroke-width:1.5}
+.dl b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:3px;font-weight:600}
+.dl a,.dl span{color:var(--navy);text-decoration:none;font-size:19px;line-height:1.35}
+.dl a:hover{color:var(--gold-ink)}
+.tel{font-family:"Barlow Condensed",sans-serif;font-size:34px!important;font-weight:700;letter-spacing:.03em}
+
+form{position:relative;z-index:2;background:var(--surface-2);border:1px solid var(--line);padding:clamp(24px,3vw,38px);box-shadow:var(--shadow)}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:block;margin-bottom:16px}
+.field span{display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;font-weight:600}
+.field input,.field select,.field textarea{
+  width:100%;background:#FCFBF8;border:1px solid var(--line);color:var(--text);
+  font:inherit;font-size:16px;padding:13px 15px;border-radius:0;transition:border-color .3s,background .3s,box-shadow .3s;
+}
+.field textarea{min-height:112px;resize:vertical}
+.field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--gold-ink) 50%),linear-gradient(135deg,var(--gold-ink) 50%,transparent 50%);background-position:calc(100% - 20px) 22px,calc(100% - 14px) 22px;background-size:6px 6px;background-repeat:no-repeat}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);background:#fff;outline:none;box-shadow:0 0 0 3px rgba(192,147,44,.16)}
+form button{
+  width:100%;background:var(--navy);color:#fff;border:1px solid var(--navy);
+  font:600 17px/1 "Barlow",sans-serif;letter-spacing:.05em;padding:17px;cursor:pointer;
+  transition:background .3s,color .3s,transform .3s;
+}
+form button:hover{background:var(--gold);border-color:var(--gold);color:#12243D;transform:translateY(-2px)}
+.note{font-size:14px;color:var(--muted);margin:14px 0 0;text-align:center}
+.sent{display:none;margin-top:14px;padding:13px 15px;border-left:3px solid var(--gold);background:rgba(192,147,44,.12);font-size:15px;color:var(--text)}
+.sent.on{display:block}
+
+/* ---------- footer ---------- */
+.foot{background:var(--navy-deep);color:rgba(255,255,255,.66);padding:44px 0 40px}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:26px;align-items:center;justify-content:space-between}
+.tagline{font-style:italic;font-size:20px;color:var(--gold-lt);line-height:1.35}
+.tagline em{display:block;font-style:italic}
+.foot small{font-size:14px}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--gold-lt)}
+.stickycall{display:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  .hero-inner{grid-template-columns:1fr;gap:40px;padding-bottom:90px}
+  .hero::after{display:none}
+  .spec{max-width:520px}
+  .cgrid{grid-template-columns:1fr;gap:44px}
+  .panels{grid-template-columns:repeat(2,1fr)}
+  .panel:first-child,.panel:last-child{margin:0}
+  .steps{grid-template-columns:1fr 1fr}
+  .step{padding-bottom:26px}
+  .step:nth-child(2){border-right:0}
+}
+@media (max-width:860px){
+  .nav{
+    position:fixed;inset:70px 0 auto 0;flex-direction:column;align-items:flex-start;gap:0;
+    background:#fff;padding:8px var(--gut) 24px;clip-path:inset(0 0 100% 0);
+    transition:clip-path .45s cubic-bezier(.6,0,.2,1);border-bottom:1px solid var(--line);
+    box-shadow:0 18px 40px -30px rgba(11,31,58,.7);
+  }
+  .hdr.open .nav{clip-path:inset(0 0 0 0)}
+  .hdr.open{background:rgba(255,255,255,.96);backdrop-filter:blur(10px)}
+  .nav a{width:100%;padding:15px 0;border-bottom:1px solid var(--hairline);font-size:16px}
+  .burger{display:block}
+  .hdr .callbtn{display:none}
+  .band .wrap{grid-template-columns:1fr 1fr}
+  .band .cell{padding:20px 16px!important;border-bottom:1px solid rgba(255,255,255,.14)}
+  .band .cell:nth-child(2n){border-right:0}
+  .band span{font-size:16px}
+  body{padding-bottom:64px}
+  .stickycall{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:55;box-shadow:0 -12px 30px -24px rgba(11,31,58,.9)}
+  .stickycall a{flex:1;display:flex;align-items:center;justify-content:center;gap:9px;padding:18px 10px;text-decoration:none;font-weight:600;font-size:16px;letter-spacing:.04em}
+  .stickycall .p{background:var(--gold);color:#12243D}
+  .stickycall .s{background:var(--navy);color:#fff}
+  .stickycall svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7}
+}
+@media (max-width:620px){
+  .item{grid-template-columns:1fr}
+  .plate{height:76px}
+  .plate::after{right:50%;top:auto;bottom:-9px;transform:translateX(50%) rotate(45deg)}
+  .item .body{padding:24px 22px}
+  .item:hover{transform:none}
+  .steps{grid-template-columns:1fr}
+  .step{border-right:0;border-bottom:1px solid var(--line);padding-left:0!important;padding-right:0}
+  .f2{grid-template-columns:1fr}
+  .panels{grid-template-columns:1fr}
+  .panel{height:190px}
+  .contact::before{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+  .step::before{width:100%}
+}
+</style>
+</head>
+<body>
+
+<div class="bar" id="bar"></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Magnum Services and Business LLC, home">
+      <svg viewBox="0 0 64 60" aria-hidden="true">
+        <path d="M7 52V13l25 27 25-27v39" fill="none" stroke="#0B1F3A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+        <g fill="none" stroke="#C0932C" stroke-width="1.9" stroke-linejoin="round">
+          <path d="M32 21c4.2 5.6 4.2 12.4 0 18-4.2-5.6-4.2-12.4 0-18Z"/>
+          <path d="M32 21c4.2 5.6 4.2 12.4 0 18-4.2-5.6-4.2-12.4 0-18Z" transform="rotate(46 32 39)"/>
+          <path d="M32 21c4.2 5.6 4.2 12.4 0 18-4.2-5.6-4.2-12.4 0-18Z" transform="rotate(-46 32 39)"/>
+        </g>
+      </svg>
+      <span>
+        <b>Magnum</b>
+        <small>Services &amp; Business LLC</small>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#services">Services</a>
+      <a href="#trades">Specialist work</a>
+      <a href="#process">How we work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a class="callbtn" href="tel:+96891289867">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+      9128 9867
+    </a>
+
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <h1 class="rv">Complete solutions.<span class="g">Exceptional results.</span></h1>
+      <p class="sub rv" style="--d:150ms">
+        Magnum Services &amp; Business LLC delivers integrated fit-out and maintenance
+        contracting across Muscat — finishes, joinery and MEP handled by
+        <strong>one team, to one standard</strong>.
+      </p>
+      <div class="hero-cta rv" style="--d:280ms">
+        <a class="btn-solid" href="#contact">Request a quote</a>
+        <a class="btn-ghost" href="tel:+96891289867">Call 9128 9867</a>
+      </div>
+    </div>
+
+    <aside class="spec rv" style="--d:420ms">
+      <h4>What we take on</h4>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg> Office and commercial fit-outs</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg> Villa and apartment finishing</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg> Renovation and refurbishment</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg> Annual maintenance contracts</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg> Call-out repairs and snagging</li>
+      </ul>
+    </aside>
+  </div>
+
+  <div class="scrollhint" aria-hidden="true"><i></i></div>
+</section>
+
+<!-- ================= ASSURANCE BAND ================= -->
+<div class="band">
+  <div class="wrap">
+    <div class="cell rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 20 6v6c0 4.6-3.3 8.5-8 9.5-4.7-1-8-4.9-8-9.5V6l8-3.5Z"/><path d="M8.6 12.2 11 14.6l4.6-4.8"/></svg><span>Quality workmanship</span></div>
+    <div class="cell rv" style="--d:110ms"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.2"/></svg><span>On-time delivery</span></div>
+    <div class="cell rv" style="--d:220ms"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12.5 7 9l3.5 2.6 3-1.8 3.4 2.6"/><path d="m10.5 11.6 3 3 2.5 2.2c.8.7 2 .1 2-1V10L14 5.5H8.8L3 9.4v4.8"/></svg><span>Customer satisfaction</span></div>
+    <div class="cell rv" style="--d:330ms"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 17.5h17"/><path d="M5.5 14.5c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5"/><path d="M9.6 8.8V5.2A1.7 1.7 0 0 1 11.3 3.5h1.4a1.7 1.7 0 0 1 1.7 1.7v3.6"/></svg><span>Experienced team</span></div>
+  </div>
+</div>
+
+<!-- ================= SERVICES ================= -->
+<section class="pad" id="services">
+  <div class="wrap">
+    <div class="head">
+      <div class="rule rv"></div>
+      <h2 class="rv">One partner for all your needs</h2>
+      <p class="rv" style="--d:120ms">
+        Six trades under one contract, so you brief one project team, hold one
+        programme, and get one point of accountability when something needs fixing.
+      </p>
+    </div>
+
+    <div class="svc">
+      <article class="item rv">
+        <div class="plate"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 36 20 20 36 4 20 20 4Z"/><path d="M20 11.5 28.5 20 20 28.5 11.5 20 20 11.5Z"/><path d="M20 4v7.5M20 28.5V36M4 20h7.5M28.5 20H36"/></svg></div>
+        <div class="body">
+          <h3>Marble, granite &amp; <em>ceramic tile fixing</em></h3>
+          <p>Floor and wall installation with accurate setting out, level substrates and clean, high-quality finishing — including cutting, polishing and grouting.</p>
+        </div>
+      </article>
+
+      <article class="item rv">
+        <div class="plate"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="5" width="28" height="30"/><path d="M14 5v30M14 20h20"/><circle cx="10.5" cy="20" r="1.4"/></svg></div>
+        <div class="body">
+          <h3>Professional carpentry, <em>partitions &amp; ceilings</em></h3>
+          <p>Bespoke joinery, doors and fitted units, plus glass and gypsum partitions and suspended ceilings built to suit the layout of the space.</p>
+        </div>
+      </article>
+
+      <article class="item rv">
+        <div class="plate"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M22.5 4 12 21h7.5L17 36 29 18h-7.5L22.5 4Z"/></svg></div>
+        <div class="body">
+          <h3>Electrical services <em>&amp; maintenance</em></h3>
+          <p>Wiring, distribution boards, lighting and power installations, fault finding and periodic testing — carried out safely and to specification.</p>
+        </div>
+      </article>
+
+      <article class="item rv">
+        <div class="plate"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="9" width="30" height="12" rx="2.5"/><path d="M10 15h20"/><path d="M12 26v6M20 26v8M28 26v6M9 30l3 2M17 32l3 2M25 30l3 2M15 30l-3 2M23 32l-3 2M31 30l-3 2"/></svg></div>
+        <div class="body">
+          <h3>HVAC services <em>&amp; maintenance</em></h3>
+          <p>Installation, servicing and repair of split, ducted and package units, including coil cleaning, gas charging and scheduled preventive maintenance.</p>
+        </div>
+      </article>
+
+      <article class="item rv">
+        <div class="plate"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 16h12v6a6 6 0 0 1-6 6 6 6 0 0 1-6-6v-6Z"/><path d="M20 19h7a4 4 0 0 0 4-4v-4"/><path d="M27 8h8"/><path d="M14 28v7"/></svg></div>
+        <div class="body">
+          <h3>Plumbing services <em>&amp; maintenance</em></h3>
+          <p>Water supply and drainage, sanitary ware and fittings, leak detection and pipe repairs — with timely maintenance to keep systems running.</p>
+        </div>
+      </article>
+
+      <article class="item rv">
+        <div class="plate"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="8" width="20" height="9" rx="2"/><path d="M26 12.5h5a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3H20a2 2 0 0 0-2 2v2"/><rect x="15" y="25" width="6" height="9" rx="1.6"/></svg></div>
+        <div class="body">
+          <h3>Painting work, <em>interior &amp; exterior</em></h3>
+          <p>Surface preparation, filling and premium-quality paint finishes for interiors, façades and joinery, with protection of surrounding areas throughout.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRADES PANELS ================= -->
+<section class="trades" id="trades">
+  <div class="panels">
+    <div class="panel rv">
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 120 90"><path d="M2 62h116M2 44h116M2 26h116"/><path d="M22 26v36M50 26v36M78 26v36M106 26v36M36 8v18M64 8v18M92 8v18M8 8h112"/><path d="M2 62 18 88M40 62 56 88M78 62 94 88"/></svg>
+      </div>
+      <div class="in"><div class="bar-g"></div><h3>Marble, granite &amp; ceramic tiles</h3></div>
+    </div>
+
+    <div class="panel rv" style="--d:110ms">
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 120 90"><rect x="8" y="10" width="104" height="70"/><path d="M43 10v70M77 10v70M8 40h104"/><path d="M18 62h16M18 68h10"/></svg>
+      </div>
+      <div class="in"><div class="bar-g"></div><h3>Glass &amp; gypsum partitions</h3></div>
+    </div>
+
+    <div class="panel rv" style="--d:220ms">
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 120 90"><rect x="6" y="8" width="108" height="74"/><rect x="22" y="22" width="76" height="46"/><rect x="36" y="34" width="48" height="22"/><path d="M6 8 22 22M114 8 98 22M6 82l16-14M114 82 98 68"/></svg>
+      </div>
+      <div class="in"><div class="bar-g"></div><h3>Gypsum ceilings</h3></div>
+    </div>
+
+    <div class="panel rv" style="--d:330ms">
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 120 90"><path d="M14 66h92V38H14z"/><path d="M14 52h92M46 38v28M78 38v28"/><path d="M24 38V22h72v16"/><path d="M60 22V8"/></svg>
+      </div>
+      <div class="in"><div class="bar-g"></div><h3>Professional carpentry</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="pad process" id="process">
+  <div class="wrap">
+    <div class="head">
+      <div class="rule rv"></div>
+      <h2 class="rv">How a job runs with us</h2>
+      <p class="rv" style="--d:120ms">A straightforward sequence, whether it's a full fit-out or a single call-out.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step rv">
+        <b>Step one</b><h3>Site visit</h3>
+        <p>We look at the space, take measurements and agree what the work actually involves.</p>
+      </div>
+      <div class="step rv" style="--d:140ms">
+        <b>Step two</b><h3>Scope &amp; quotation</h3>
+        <p>You receive an itemised quote with materials, programme and cost set out clearly.</p>
+      </div>
+      <div class="step rv" style="--d:280ms">
+        <b>Step three</b><h3>Execution</h3>
+        <p>Our supervised team carries out the work, keeping the site clean and safe throughout.</p>
+      </div>
+      <div class="step rv" style="--d:420ms">
+        <b>Step four</b><h3>Handover &amp; upkeep</h3>
+        <p>We walk the finished work with you, clear any snags, and can continue on maintenance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="pad contact" id="contact">
+  <div class="wrap">
+    <div class="head">
+      <div class="rule rv"></div>
+      <h2 class="rv">Tell us what you need</h2>
+      <p class="rv" style="--d:120ms">Send the details of your project or maintenance requirement and we'll come back with a quotation.</p>
+    </div>
+
+    <div class="cgrid">
+      <div class="rv">
+        <ul class="dl">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            <div><b>Call us today</b><a class="tel" href="tel:+96891289867">9128 9867</a></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 6.5L21 6"/></svg>
+            <div><b>Email</b><a href="mailto:magnumservices.om@gmail.com">magnumservices.om@gmail.com</a></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10.5c0 5.4-8 12-8 12s-8-6.6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10.3" r="2.8"/></svg>
+            <div><b>Office</b><span>Al Wadi Al Kabir, Muscat<br>Sultanate of Oman</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <form id="quote" class="rv" style="--d:140ms" novalidate>
+        <div class="f2">
+          <label class="field"><span>Your name</span><input type="text" name="name" id="q-name" required autocomplete="name"></label>
+          <label class="field"><span>Phone</span><input type="tel" name="phone" id="q-phone" required autocomplete="tel"></label>
+        </div>
+        <label class="field"><span>What do you need?</span>
+          <select name="service" id="q-service">
+            <option>Marble, granite &amp; ceramic tiles</option>
+            <option>Carpentry, partitions &amp; ceilings</option>
+            <option>Electrical services</option>
+            <option>HVAC services</option>
+            <option>Plumbing services</option>
+            <option>Painting work</option>
+            <option>Full fit-out or renovation</option>
+            <option>Annual maintenance contract</option>
+          </select>
+        </label>
+        <label class="field"><span>Details</span><textarea name="message" id="q-message" placeholder="Location, size of the space, and when you'd like the work done."></textarea></label>
+        <button type="submit">Send enquiry</button>
+        <p class="note">This opens your email app with the details filled in. Prefer to talk? Call 9128 9867.</p>
+        <p class="sent" id="sent" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="tagline">Building better spaces.<em>Delivering lasting value.</em></div>
+    <small>&copy; <span id="yr">2026</span> Magnum Services &amp; Business LLC, Muscat · <a href="tel:+96891289867">9128 9867</a></small>
+  </div>
+</footer>
+
+<div class="stickycall">
+  <a class="p" href="tel:+96891289867"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>Call</a>
+  <a class="s" href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 6.5L21 6"/></svg>Get a quote</a>
+</div>
+
+<script>
+(function(){
+  var hdr=document.getElementById('hdr'),bar=document.getElementById('bar'),
+      burger=document.getElementById('burger'),nav=document.getElementById('nav');
+
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  var ticking=false;
+  function onScroll(){
+    var y=window.scrollY||document.documentElement.scrollTop;
+    hdr.classList.toggle('stuck',y>40);
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(y/h)*100:0)+'%';
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!ticking){window.requestAnimationFrame(onScroll);ticking=true;}
+  },{passive:true});
+  onScroll();
+
+  burger.addEventListener('click',function(){
+    var open=hdr.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+    burger.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+  nav.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){hdr.classList.remove('open');burger.setAttribute('aria-expanded','false');}
+  });
+
+  var targets=document.querySelectorAll('.rv, .step');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!('IntersectionObserver' in window)){
+    targets.forEach(function(el){el.classList.add('in');});
+  }else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+      });
+    },{rootMargin:'0px 0px -12% 0px',threshold:0.12});
+    targets.forEach(function(el){io.observe(el);});
+  }
+
+  var form=document.getElementById('quote'),sent=document.getElementById('sent');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('q-name').value.trim(),
+        phone=document.getElementById('q-phone').value.trim(),
+        service=document.getElementById('q-service').value,
+        msg=document.getElementById('q-message').value.trim();
+    if(!name||!phone){
+      sent.textContent='Add your name and phone number so we can get back to you.';
+      sent.classList.add('on');
+      (!name?document.getElementById('q-name'):document.getElementById('q-phone')).focus();
+      return;
+    }
+    var body='Name: '+name+'\nPhone: '+phone+'\nService: '+service+'\n\nDetails:\n'+(msg||'-');
+    window.location.href='mailto:magnumservices.om@gmail.com'
+      +'?subject='+encodeURIComponent('Enquiry: '+service)
+      +'&body='+encodeURIComponent(body);
+    sent.textContent='Your email app should now be open with the enquiry ready to send.';
+    sent.classList.add('on');
+  });
+})();
+</script>
+</body>
+</html>
